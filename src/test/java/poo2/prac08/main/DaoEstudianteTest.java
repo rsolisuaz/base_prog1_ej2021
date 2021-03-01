@@ -34,11 +34,16 @@ public class DaoEstudianteTest extends TestCase{
     private static double calificacion;
     public static IDataSet expectedDataSet;
 
-    private final static double CALIF_OBTENER=3;
+    private final static double CALIF_OBTENER_VALIDO=5;
+    private final static double CALIF_OBTENER_INVALIDO=1;
+
     private final static double CALIF_OBTENER_ALL=8;
-    private final static double CALIF_AGREGAR=4;
-    private final static double CALIF_UPDATE=4;
-    private final static double CALIF_DELETE=4;
+    private final static double CALIF_AGREGAR_VALIDO=6;
+    private final static double CALIF_AGREGAR_INVALIDO=3;
+    private final static double CALIF_UPDATE_VALIDO=6;
+    private final static double CALIF_UPDATE_INVALIDO=3;
+    private final static double CALIF_DELETE_VALIDO=6;
+    private final static double CALIF_DELETE_INVALIDO=3;
     private final static double MAX_CALIF=50;
 
     @BeforeAll
@@ -47,7 +52,8 @@ public class DaoEstudianteTest extends TestCase{
         Logger.getRootLogger().setLevel(Level.OFF);
         databaseTester=new JdbcDatabaseTester(ConfigAccesoBaseDatos.driverName,
                 ConfigAccesoBaseDatos.url,
-                ConfigAccesoBaseDatos.usuario,ConfigAccesoBaseDatos.clave);
+                ConfigAccesoBaseDatos.usuario,
+                ConfigAccesoBaseDatos.clave);
         databaseTester.setOperationListener(new ConfigAccesoBaseDatos.CustomConfigurationOperationListener());
         conndbunit=databaseTester.getConnection();
         DatabaseConfig config=conndbunit.getConfig();
@@ -131,7 +137,7 @@ public class DaoEstudianteTest extends TestCase{
         }
         assertTrue(actual.isPresent());
         comparaEstudiante(datosEsestados.get(0),actual.get());
-        calificacion += CALIF_OBTENER;
+        calificacion += CALIF_OBTENER_VALIDO;
     }
 
     @Test
@@ -151,7 +157,7 @@ public class DaoEstudianteTest extends TestCase{
         }
 
         assertFalse(actual.isPresent());
-        calificacion += CALIF_OBTENER;
+        calificacion += CALIF_OBTENER_INVALIDO;
     }
 
     @Test
@@ -215,7 +221,7 @@ public class DaoEstudianteTest extends TestCase{
         ITable expectedTable=expectedDataSet.getTable("estudiante");
 
         Assertion.assertEquals(expectedTable,actualTable);
-        calificacion += CALIF_AGREGAR;
+        calificacion += CALIF_AGREGAR_VALIDO;
     }
 
     @Test
@@ -260,7 +266,7 @@ public class DaoEstudianteTest extends TestCase{
         ITable expectedTable=expectedDataSet.getTable("estudiante");
 
         Assertion.assertEquals(expectedTable,actualTable);
-        calificacion += CALIF_AGREGAR;
+        calificacion += CALIF_AGREGAR_INVALIDO;
     }
 
     private void validaNull_o_Vacio(DaoEstudiante daoEstudiante,
@@ -276,7 +282,7 @@ public class DaoEstudianteTest extends TestCase{
         String email="misalas@uaz.edu.mx";
         long idest=32L;
         long idmun=32042L;
-        
+
         boolean resultado=true;
         String valprev;
 
@@ -406,7 +412,7 @@ public class DaoEstudianteTest extends TestCase{
         String[] email={"xxtat@yho.com","correoultralarguisimoquenodeberiadeseraceptado@masalla.delmasalla.delmasalla.com"};
         long[] idest={32,35};
         long[] idmun={32056,32100};
-        
+
 
         Estudiante est = new Estudiante(matricula[1],nom[0],apPat[0],email[0]);
         est.setApMaterno(apMat[0]);
@@ -485,7 +491,7 @@ public class DaoEstudianteTest extends TestCase{
             resultado=true;
         }
         assertFalse(resultado);
-        calificacion += CALIF_AGREGAR;
+        calificacion += CALIF_AGREGAR_INVALIDO;
     }
 
     @Test
@@ -531,7 +537,7 @@ public class DaoEstudianteTest extends TestCase{
         ITable expectedTable=expectedDataSet.getTable("estudiante");
 
         Assertion.assertEquals(expectedTable,actualTable);
-        calificacion += CALIF_UPDATE;
+        calificacion += CALIF_UPDATE_VALIDO;
     }
 
     @Test
@@ -568,7 +574,7 @@ public class DaoEstudianteTest extends TestCase{
             assertNull("No deberia generar excepcion el metodo save de Estudiante",ex);
         }
         assertFalse(resultado);
-        calificacion += CALIF_UPDATE;
+        calificacion += CALIF_UPDATE_INVALIDO;
     }
 
     @Test
@@ -670,7 +676,7 @@ public class DaoEstudianteTest extends TestCase{
         }
 
         assertFalse(resultado);
-        calificacion += CALIF_AGREGAR;
+        calificacion += CALIF_UPDATE_INVALIDO;
     }
 
     @Test
@@ -685,7 +691,7 @@ public class DaoEstudianteTest extends TestCase{
         catch (Exception ex) {
             assertNull("No deberia generar excepcion el metodo delete de DaoEstudiante",ex);
         }
-        calificacion += CALIF_DELETE;
+        calificacion += CALIF_DELETE_INVALIDO;
     }
 
     @Test
@@ -708,7 +714,7 @@ public class DaoEstudianteTest extends TestCase{
         IDataSet expectedDataSet=new FlatXmlDataSetBuilder().build(new File("estudiante.xml"));
         ITable expectedTable=expectedDataSet.getTable("estudiante");
         Assertion.assertEquals(expectedTable,actualTable);
-        calificacion += CALIF_DELETE;
+        calificacion += CALIF_DELETE_VALIDO;
     }
 
     @Test
@@ -731,9 +737,6 @@ public class DaoEstudianteTest extends TestCase{
         IDataSet expectedDataSet=new FlatXmlDataSetBuilder().build(new File("estudiante.xml"));
         ITable expectedTable=expectedDataSet.getTable("estudiante");
         Assertion.assertEquals(expectedTable,actualTable);
-        calificacion += CALIF_DELETE;
+        calificacion += CALIF_DELETE_INVALIDO;
     }
-
-
-
 }
