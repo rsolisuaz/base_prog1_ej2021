@@ -29,11 +29,13 @@ public class DaoMunicipioTest extends TestCase {
     private static double calificacion;
     public static IDataSet expectedDataSet;
 
-    private final static double CALIF_OBTENER=0.5;
-    private final static double CALIF_OBTENER_ALL=1;
-    private final static double CALIF_AGREGAR=4;
-    private final static double CALIF_UPDATE=4;
-    private final static double CALIF_DELETE=4;
+    private final static double CALIF_OBTENER_EXISTENTE=5;
+    private final static double CALIF_OBTENER_INEXISTENTE=1;
+
+    private final static double CALIF_OBTENER_ALL=5;
+    private final static double CALIF_AGREGAR=1;
+    private final static double CALIF_UPDATE=1;
+    private final static double CALIF_DELETE=1;
     private final static double MAX_CALIF=14;
 
     @BeforeAll
@@ -42,7 +44,8 @@ public class DaoMunicipioTest extends TestCase {
         Logger.getRootLogger().setLevel(Level.OFF);
         databaseTester=new JdbcDatabaseTester(ConfigAccesoBaseDatos.driverName,
                 ConfigAccesoBaseDatos.url,
-                ConfigAccesoBaseDatos.usuario,ConfigAccesoBaseDatos.clave);
+                ConfigAccesoBaseDatos.usuario,
+                ConfigAccesoBaseDatos.clave);
         databaseTester.setOperationListener(new ConfigAccesoBaseDatos.CustomConfigurationOperationListener());
         conndbunit=databaseTester.getConnection();
         DatabaseConfig config=conndbunit.getConfig();
@@ -92,7 +95,7 @@ public class DaoMunicipioTest extends TestCase {
         }
         assertTrue(actual.isPresent());
         comparaMunicipio(datosEsperados.get(0),actual.get());
-        calificacion += CALIF_OBTENER;
+        calificacion += CALIF_OBTENER_EXISTENTE;
     }
 
     @Test
@@ -112,7 +115,7 @@ public class DaoMunicipioTest extends TestCase {
         }
 
         assertFalse(actual.isPresent());
-        calificacion += CALIF_OBTENER;
+        calificacion += CALIF_OBTENER_INEXISTENTE;
     }
 
     @Test
