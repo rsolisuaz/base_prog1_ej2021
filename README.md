@@ -84,6 +84,7 @@ Para ejecutar las pruebas de tu programa selecciona el archivo correspondiente a
 
 10. Cada vez que subas tu proyecto al repositorio privado con un push, se aplicarán automáticamente las pruebas sobre tu código para verificar si funciona correctamente. Recuerda que en la página de tu repositorio en la sección **Pull Requests**, se encuentra una subsección de nombre **Feedback**, donde podrás encontrar los resultados de las pruebas en la pestaña denominada **Check** (expandiendo la parte que dice **Run education/autograding@v1**), y cualquier comentario general que el profesor tenga sobre tu código en la pestaña **Conversation**. 
 
+11. Se tendrá hasta las 23:59 horas del día en en cual se haya concluido por parte del instructor la práctica 08, para hacer el último push que se tomará en cuenta para evaluar la práctica.
 
 ## REQUERIMIENTOS DEL PROGRAMA 1
 
@@ -105,3 +106,5 @@ La calificación para esta se calculará de manera automatizada al hacer push, r
 3. Si la parte que ya tienes pasa las pruebas correspondientes, súbelo al repositorio remoto dando `git push`. De otra manera, corrige los errores (haciendo las pruebas, git add y git commit correspondientes)
 
 4. Recuerda que cada vez que hagas `git push` se realizarán automáticamente pruebas sobre tu código para verificar si funciona correctamente. Para esta práctica en particular no se te proporcionará una calificación de manera inmediata pues debe ser revisada con mayor detalle. Recuerda que en la página de tu repositorio en la sección **Pull Requests**, se encuentra una subsección de nombre **Feedback**, donde podrás encontrar los resultados de las pruebas en la pestaña denominada **Check** (expandiendo la parte que dice **Run education/autograding@v1**), y cualquier comentario general que el profesor tenga sobre tu código en la pestaña **Conversation**. 
+
+5. Se tendrá hasta las 23:59 horas del 21 de marzo del 2021 para hacer el último push.
