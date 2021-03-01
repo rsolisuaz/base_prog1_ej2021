@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Optional;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class DAOEstudianteTest extends TestCase{
+public class DaoEstudianteTest extends TestCase{
     private static IDatabaseTester databaseTester;
     private static IDatabaseConnection conndbunit;
     private static List<Estudiante> datosEsestados;

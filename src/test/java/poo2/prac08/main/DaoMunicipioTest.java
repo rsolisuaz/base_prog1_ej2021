@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class DAOMunicipioTest extends TestCase {
+public class DaoMunicipioTest extends TestCase {
     private static IDatabaseTester databaseTester;
     private static IDatabaseConnection conndbunit;
     private static List<Municipio> datosEsperados;
