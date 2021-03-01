@@ -4,7 +4,8 @@ package poo2.progs.entidades;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Municipio implements Serializable {
+// TODO implementar Serializable
+public class Municipio {
 
   private long idMunicipio;
   private String nombreMunicipio;

@@ -4,7 +4,8 @@ package poo2.progs.entidades;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Estudiante implements Serializable {
+// TODO implementar Serializable
+public class Estudiante  {
 
   private String matricula;
   private String nombre;
