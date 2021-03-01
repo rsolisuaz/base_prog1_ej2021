@@ -32,9 +32,13 @@ public class DaoEscolaresImplTest extends TestCase {
     private static int calif_municipio;
 
     private final static int CALIF_OBTENER=5;
-    private final static int CALIF_AGREGAR=5;
-    private final static int CALIF_UPDATE=5;
-    private final static int CALIF_DELETE=5;
+    private final static int CALIF_AGREGAR_VALIDO=8;
+    private final static int CALIF_AGREGAR_INVALIDO=2;
+    private final static int CALIF_UPDATE_VALIDO=8;
+    private final static int CALIF_UPDATE_INVALIDO=2;
+    private final static int CALIF_DELETE_VALIDO=8;
+    private final static int CALIF_DELETE_INVALIDO=2;
+
     private final static int MAX_CALIF_MUNICIPIO=5;
     private final static int MAX_CALIF_ESTUDIANTE=35;
     private final static double PORCENTAJE_MUNICIPIO=20;
@@ -154,7 +158,7 @@ public class DaoEscolaresImplTest extends TestCase {
 
     @Test
     @Order(2)
-    public void testPersonaObten() throws Exception {
+    public void testEstudianteObten() throws Exception {
         DaoEscolaresImpl dao= new DaoEscolaresImpl(conndbunit.getConnection());
         List<Estudiante> actual;
         try {
@@ -216,7 +220,7 @@ public class DaoEscolaresImplTest extends TestCase {
         ITable expectedTable=expectedDataSet.getTable("estudiante");
 
         Assertion.assertEquals(expectedTable,actualTable);
-        calif_estudiante += CALIF_AGREGAR;
+        calif_estudiante += CALIF_AGREGAR_VALIDO;
     }
 
     @Test
@@ -261,7 +265,7 @@ public class DaoEscolaresImplTest extends TestCase {
         ITable expectedTable=expectedDataSet.getTable("estudiante");
 
         Assertion.assertEquals(expectedTable,actualTable);
-        calif_estudiante += CALIF_AGREGAR;
+        calif_estudiante += CALIF_AGREGAR_INVALIDO;
     }
 
     @Test
@@ -306,13 +310,13 @@ public class DaoEscolaresImplTest extends TestCase {
         ITable expectedTable=expectedDataSet.getTable("estudiante");
 
         Assertion.assertEquals(expectedTable,actualTable);
-        calif_estudiante += CALIF_UPDATE;
+        calif_estudiante += CALIF_UPDATE_VALIDO;
     }
 
     @Test
     @Order(6)
     public void testEstudianteModificarInexistente() throws Exception {
-        String matricula="3108151A";
+        String matricula="31081510";
         String nombre="Luis";
         String apPaterno="Padilla";
         String apMaterno="Medina";
@@ -343,7 +347,7 @@ public class DaoEscolaresImplTest extends TestCase {
         }
         assertFalse(resultado);
 
-        calif_estudiante += CALIF_UPDATE;
+        calif_estudiante += CALIF_UPDATE_INVALIDO;
     }
 
     @Test
@@ -365,14 +369,14 @@ public class DaoEscolaresImplTest extends TestCase {
         IDataSet expectedDataSet=new FlatXmlDataSetBuilder().build(new File("estudiante.xml"));
         ITable expectedTable=expectedDataSet.getTable("estudiante");
         Assertion.assertEquals(expectedTable,actualTable);
-        calif_estudiante += CALIF_DELETE;
+        calif_estudiante += CALIF_DELETE_VALIDO;
     }
 
 
     @Test
     @Order(8)
     public void testEstudianteEliminarInexistente() throws Exception {
-        String id="SHY$$gq@gaga";
+        String id="31081510";
         DaoEscolaresImpl dao= new DaoEscolaresImpl(conndbunit.getConnection());
         try {
             boolean resultado=dao.eliminaEstudiante(id);
@@ -381,6 +385,6 @@ public class DaoEscolaresImplTest extends TestCase {
         catch (Exception ex) {
             assertNull("No deberia generar excepcion el metodo eliminaEstudiante de DaoEscolaresImpl",ex);
         }
-        calif_estudiante += CALIF_DELETE;
+        calif_estudiante += CALIF_DELETE_INVALIDO;
     }
 }
