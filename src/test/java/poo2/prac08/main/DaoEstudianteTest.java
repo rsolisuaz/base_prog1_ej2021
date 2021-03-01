@@ -682,7 +682,7 @@ public class DaoEstudianteTest extends TestCase{
     @Test
     @Order(11)
     public void testDeleteEstudianteInexistente() throws Exception {
-        String id="SHY$$gq@gaga";
+        String id="31081510";
         DaoEstudiante daoEstudiante=new DaoEstudiante(conndbunit.getConnection());
         try {
             boolean resultado=daoEstudiante.delete(id);
