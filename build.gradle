@@ -34,7 +34,7 @@ test {
     testLogging {
         events 'PASSED', 'FAILED', 'SKIPPED'
     }
-
+    testLogging.showStandardStreams = true
     afterSuite { desc, result ->
         if (!desc.parent) {
             println "\nResultados de Prueba: ${result.resultType}"
