@@ -28,7 +28,7 @@ public class Municipio implements Serializable {
     this.nombreMunicipio = nombreMunicipio;
   }
 
-  // Crear el equals, hashCode para esta y todas las clases de entidad
+  // TODO Crear el equals, hashCode para esta y todas las clases de entidad
 
-  // Crear el toString para esta y todas las clases de entidad donde se solicite
+  // TODO Crear el toString para esta y todas las clases de entidad donde se solicite
 }
